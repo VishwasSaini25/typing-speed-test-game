@@ -1,38 +1,164 @@
-.App {
+
+.App{
   text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #27005D;
+  height: 100vh;
+  /* display: block; */
+}
+.information{
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #27005D;
+  height: 100vh;
+  display:flex; 
+  flex-direction: column;
+}
+.infoPoints{
+  margin: 0 auto;
+  padding: 5%;
+}
+.infoPoints li{
+  font-size: 1.5rem;
+  color: white;
+  text-align: left;
+  padding: 1.5%;
+  font-family: cursive;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.game-container {
+  margin: 0 auto;
+  padding: 10%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.button-36 {
+  background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  height: 3.1rem;
+  padding: 0 1.6rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all .5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-36:hover {
+  box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+  transition-duration: .1s;
+}
+
+@media (min-width: 768px) {
+  .button-36 {
+    padding: 0 2.6rem;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+button {
+  margin: 2%;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+p {
+  font-size: 18px;
+  color: #E4F1FF;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+h1{
+  margin: 2%;
+  font-size: 40px;
+  letter-spacing: 1.5px;
+  color: #9400FF;
+}
+.text-display {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #AED2FF;
+  animation: FadeIn .5s;
+}
+
+@keyframes FadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+input {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  background-color: #E4F1FF;
+  height: 2.8rem;
+  border-radius: 8px;
+  padding-left: 5px;
+  outline: none;
+  border: none;
+}
+.highlighted {
+  padding: 5px;
+  text-align: center;
+  background-color: black; /* Highlight incorrect words with a light red background */
+}
+.blinking {
+  animation: blinker 1s linear infinite;
+  opacity: 1;
+}
+
+@keyframes blinker {
+0% {
+  opacity: 1;
+  color: red;
+}
+50% {
+  opacity: 0.5;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+100% {
+  opacity: 0;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+}
+.timer-input{
+  display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.timer-input input{
+  width: 10%;
+  height: 30px;
+  margin-left: 2%;
+}
+.timer-input label{
+  color:#673FD7;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.info h2{
+  font-size: 1.5rem;
+  font-family:monospace;
+  border-radius: 100%;
+  color: white;
+  border: 2px solid white;
+  float: right;
+  height: 30px;
+  width: 30px;
+  padding: .5%;
+  margin-right: 2%;
 }

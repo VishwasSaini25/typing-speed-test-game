@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate,useLocation } from 'react-router-dom';
-
+import { useNavigate} from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
 
-function Home(props) {
+function Home() {
   const History = useNavigate();
-  const {state} = useLocation();
-  const { username, password } = state;
   const [text, setText] = useState('');
   const [userInput, setUserInput] = useState('');
   const [highlightedIndex, setHighlightedIndex] = useState(0);
@@ -35,7 +32,6 @@ function Home(props) {
     } else if (timeRemaining === 0) {
       setIsGameOver(true);
       setIsGameStarted(false);
-      console.log(inputHistory);
       const totalTypedWords = inputHistory.join(" ").split(" ").filter(word => word !== '').length;
 
       if (totalTypedWords > 0) {
@@ -59,7 +55,6 @@ function Home(props) {
     try {
       const response = await fetch('https://baconipsum.com/api/?type=meat-and-filler&paras=1&sentences=1');
       const data = await response.json();
-      // console.log(data);
       setText(data[0]);
       if (play) {
         setHighlightedIndex(0);
@@ -92,7 +87,7 @@ function Home(props) {
     }
 
     if (allWordsCorrect && typedWords.length === text.split(' ').length) {
-      // User has typed all the words correctly, fetch a new text
+      // User  has typed all the words correctly, fetch a new text
       setInputHistory((prevHistory) => [...prevHistory, value]);
       generateRandomText(allWordsCorrect);
     } else if (typedWords[highlightedIndex] === currentWord && highlightedIndex < text.split(' ').length - 1) {
@@ -115,7 +110,7 @@ function Home(props) {
     setIsGameStarted(false);
 
     const totalTypedWords = inputHistory.join(" ").split(" ").filter(word => word !== '').length;
-
+    
     if (totalTypedWords > 0) {
       const minutes = (customTimer - timeRemaining) / 60; // Total time allowed in minutes
       const wordsPerMinute = Math.round(totalTypedWords / minutes);
@@ -129,14 +124,18 @@ function Home(props) {
     setUserInput('');
     window.location.reload(false);
   };
+
+    // logout
   const handleLogout = async () => {
-    await axios.post('http://localhost:5000/api/logout', { username, password })
+    await axios.post('http://localhost:5000/api/logout')
         .then(response => {
-            console.log(response.data);
-            props.func(null);
             if(response.data){
+                const deleteCookie = (cookieName) => {
+                document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+                };
+                deleteCookie(document.cookie);
                 History("/");
-            }else {
+            } else {
             History(null);
             }
         })
@@ -149,7 +148,7 @@ function Home(props) {
     <div className="App" style={display}>
       <div className='info' style={inDisplay} onClick={() => History('/info')}>
         <h2>i</h2>
-        <button onClick={handleLogout}>Logout</button>
+        <button className='logout' onClick={handleLogout}>Logout</button>
 
       </div>
       <div className="game-container">
@@ -196,7 +195,7 @@ function Home(props) {
         {isGameOver && (
           <div>
             <p>Game Over!</p>
-            <p>Your Speed: {typingSpeed} wpm</p>
+            <p>Your Speed: {inputHistory.length === 0 ? "too slow" : typingSpeed + "wpm"} </p>
             <button className="button-36" onClick={playAgain}>Play Again</button>
           </div>
         )}

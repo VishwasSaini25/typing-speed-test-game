@@ -71,7 +71,31 @@ button {
   font-weight: 400;
   letter-spacing: 1px;
 }
-
+.showPass{
+  width: 4rem !important;
+}
+.logout{
+  margin-top: 1.5%;
+  cursor: pointer;
+  letter-spacing: 1px;
+  float: right;
+  background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  height: 2.8rem;
+  padding: 0 1.6rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all .5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
 p {
   font-size: 18px;
   color: #E4F1FF;
